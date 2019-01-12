@@ -13,3 +13,20 @@ spec:
   - name: http
     port: 9200
 #type: LoadBalancer
+
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: elasticsearch-data-service
+#  labels:
+#    component: elasticsearch
+#    role: data
+#spec:
+#  selector:
+#    component: elasticsearch
+#    role: data
+#  type: ClusterIP
+#  ports:
+#  - name: http
+#    port: 9200
+#    protocol: TCP
