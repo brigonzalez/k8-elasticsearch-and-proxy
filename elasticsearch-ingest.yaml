@@ -10,7 +10,7 @@ spec:
     matchLabels:
       component: elasticsearch
       role: ingest
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -64,17 +64,17 @@ spec:
           name: http
         - containerPort: 9300
           name: transport
-        livenessProbe:
-          tcpSocket:
-            port: transport
-          initialDelaySeconds: 20
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /_cluster/health
-            port: http
-          initialDelaySeconds: 20
-          timeoutSeconds: 5
+#        livenessProbe:
+#          tcpSocket:
+#            port: transport
+#          initialDelaySeconds: 20
+#          periodSeconds: 10
+#        readinessProbe:
+#          httpGet:
+#            path: /_cluster/health
+#            port: http
+#          initialDelaySeconds: 20
+#          timeoutSeconds: 5
         volumeMounts:
         - name: storage
           mountPath: /data

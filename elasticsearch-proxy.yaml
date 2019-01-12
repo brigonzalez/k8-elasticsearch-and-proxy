@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elasticsearch-proxy
+  labels:
+    component: elasticsearch
+    role: proxy
+spec:
+  selector:
+    matchLabels:
+      component: elasticsearch
+      role: proxy
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        component: elasticsearch
+        role: proxy
+    spec:
+      containers:
+      - name: init-sysctl
+        image: busybox:1.27.2
+        securityContext:
+          privileged: true

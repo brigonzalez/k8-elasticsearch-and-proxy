@@ -11,7 +11,7 @@ spec:
       component: elasticsearch
       role: master
   serviceName: elasticsearch-master
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       labels:
@@ -42,7 +42,7 @@ spec:
         - name: CLUSTER_NAME
           value: elasticsearch
         - name: NUMBER_OF_MASTERS
-          value: "2"
+          value: "1"
         - name: NODE_MASTER
           value: "true"
         - name: NODE_INGEST
@@ -65,11 +65,11 @@ spec:
         ports:
         - containerPort: 9300
           name: transport
-        livenessProbe:
-          tcpSocket:
-            port: transport
-          initialDelaySeconds: 20
-          periodSeconds: 10
+#        livenessProbe:
+#          tcpSocket:
+#            port: transport
+#          initialDelaySeconds: 20
+#          periodSeconds: 10
         volumeMounts:
         - name: storage
           mountPath: /data
